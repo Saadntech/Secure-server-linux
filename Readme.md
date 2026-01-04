@@ -22,6 +22,8 @@ Transform a default Ubuntu server into a hardened secure system resistant to com
 - UFW Firewall
 - Fail2Ban
 - Nmap
+
+  
 ##What i learn
 difference between apt upgrade and apt dist-upgrade we prefer to use apt dist-upgrade so we delete ,install or replace files  .
 apt install unattended-upgrades for Automatic upgrades very usefull for Devops / cybersecurity
