@@ -33,7 +33,3 @@ The goal of this lab was to transform a "stock" Linux installation into a harden
 * **Log Analysis:** Gained experience using `tail -f /var/log/auth.log` to monitor system health and detect live intrusion attempts.
 * **Service Verification:** Used `ss -tulpn` to audit listening ports and ensure no unauthorized services were exposed.
 
-## 📸 Lab Evidence
-| Fail2Ban Status | Active Connections |
-|---|---|
-| ![Fail2Ban Status](screenshots/fail2ban_status.png) | ![Port Audit](screenshots/ufw_rules.png) |
