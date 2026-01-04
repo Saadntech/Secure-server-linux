@@ -1,35 +1,47 @@
-# Linux Hardening & Intrusion Prevention Lab
+#Linux Hardening Lab
 
-An implementation of enterprise-grade security controls on an Ubuntu 22.04 LTS server to mitigate unauthorized access and brute-force attacks.
+This project demonstrates how to secure a Linux server by applying enterprise-grade security controls.
 
-## Objective
-The goal of this lab was to transform a "stock" Linux installation into a hardened environment using the **Defense in Depth** strategy.
+##Objective
+Transform a default Ubuntu server into a hardened secure system resistant to common cyber attacks.
 
-## Tech Stack
-* **OS:** Ubuntu 22.04 LTS
-* **Firewall:** UFW (Uncomplicated Firewall)
-* **Security:** Fail2Ban, OpenSSH
-* **Analysis:** Nmap, Linux Audit Logs
+##Security Layers Implemented
 
-## Security Implementations
+| Layer | Description |
+|------|-----------|
+| Identity Security | Non-root user, sudo controls |
+| SSH Hardening | Key-based auth, root blocked, custom port |
+| Firewall | UFW with default deny |
+| Intrusion Prevention | Fail2Ban |
+| Log Monitoring | Real-time auth log analysis |
+| Attack Simulation | Port scanning & brute force tests |
 
-### 1. SSH Hardening & Identity Management
-* **Disabled Root Login:** Prevented direct administrative access to reduce attack surface.
-* **Key-Based Authentication:** Disabled passwords entirely in favor of **4096-bit RSA keys**.
-* **Port Obscurity:** Moved SSH from the default port 22 to **port 777** to avoid automated bot scanning.
+##Tools Used
+- Ubuntu Server 22.04
+- OpenSSH
+- UFW Firewall
+- Fail2Ban
+- Nmap
+##What i learn
+difference between apt upgrade and apt dist-upgrade we prefer to use apt dist-upgrade so we delete ,install or replace files  .
+apt install unattended-upgrades for Automatic upgrades very usefull for Devops / cybersecurity
+using publicKey for more security than a normal password with command :ssh-keygen -b 4096
+that's creat a public for logs .
+I change the port 22  in file /etc/ssh/sshd_config to port 777 so to not let hackers to know which port we are working at . and this modifications
+PermitRootLogin no
+PasswordAuthentication no
+Port 777
+next step we use farewall and let only our port to get in 777 .
+enable fail2ban used for person who tries multple password to get one right to protect server from "brute force".
+using log monitoring too see session's.
 
-### 2. Network Security (UFW)
-* Implemented a **Default Deny** policy.
-* Only explicitly allowed traffic on the custom SSH port (777).
-
-### 3. Intrusion Prevention (Fail2Ban)
-* Configured Fail2Ban to monitor authentication logs.
-* Automated the "banning" of IP addresses that show malicious patterns (brute-force attempts).
 
 
 
-##  Lessons Learned
-* **Package Management:** Learned the importance of `apt dist-upgrade` for handling complex dependency changes and `unattended-upgrades` for critical security patching.
-* **Log Analysis:** Gained experience using `tail -f /var/log/auth.log` to monitor system health and detect live intrusion attempts.
-* **Service Verification:** Used `ss -tulpn` to audit listening ports and ensure no unauthorized services were exposed.
+## 📸 Screenshots
+<img width="1212" height="556" alt="Screenshot 2026-01-04 194347" src="https://github.com/user-attachments/assets/b0ded1ad-38de-4c0d-af2f-7abfa52ac7fb" />
 
+
+fail2ban-client status
+ss -tulpn
+can you fix this 
